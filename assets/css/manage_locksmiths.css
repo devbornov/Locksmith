@@ -1,0 +1,41 @@
+/* Example CSS for managing locksmith registrations */
+.container {
+    margin: 20px;
+}
+
+.locksmith-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.locksmith-table th, .locksmith-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.locksmith-table th {
+    background-color: #f4f4f4;
+}
+
+.action-button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.action-button.approve {
+    background-color: #28a745;
+}
+
+.action-button.reject {
+    background-color: #dc3545;
+}
+
+.action-button:hover {
+    opacity: 0.8;
+}
