@@ -33,7 +33,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                 <li><a href="?page=commission_settings">Set Commission</a></li>
                 <li><a href="?page=locksmith_performance">Locksmith Performance</a></li>
                 <li><a href="?page=payment_management">Payment Management</a></li>
-                <li><a href="?page=view_statistics">View Statistics</a></li>
+                <li><a href="?page=View_Statistics">View Statistics</a></li>
                 <li><a href="../auth/logout.php">Logout</a></li>
             </ul>
         </aside>
@@ -51,7 +51,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                 'commission_settings',
                 'locksmith_performance' ,
                 'payment_management', 
-                'view_statistics'
+                'View_Statistics'
             ];
 
             if (in_array($page, $allowed_pages)) {
