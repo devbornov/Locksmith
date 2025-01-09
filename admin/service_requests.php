@@ -44,7 +44,7 @@ $requests = $stmt->fetchAll();
                     <td><?= htmlspecialchars($request['locksmith_id']) ?></td>
                     <td><?= htmlspecialchars($request['service_id']) ?></td>
                     <td><?= htmlspecialchars($request['bid_amount']) ?></td>
-                    <td><?= htmlspecialchars($request['bid_status']) ?></td>
+                    <td><?= htmlspecialchars($request['locksmith_response']) ?></td>
                     <td>
                         <a href="approve_request.php?id=<?= $request['id'] ?>" class="action-button approve">Approve</a>
                         <a href="reject_request.php?id=<?= $request['id'] ?>" class="action-button reject">Reject</a>

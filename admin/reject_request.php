@@ -17,6 +17,6 @@ if ($request_id) {
     $stmt->execute([$request_id]);
 }
 
-header("Location: service_requests.php");
+header("Location: http://localhost/locksmith2/admin/dashboard.php?page=service_requests&status=approved");
 exit();
 ?>

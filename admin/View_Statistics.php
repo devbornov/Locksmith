@@ -27,9 +27,8 @@ $stmt_services = $pdo->query("SELECT service_id, COUNT(*) AS total_requests
 $popular_services = $stmt_services->fetchAll();
 
 // Fetch recent transactions
-$stmt_transactions = $pdo->query("SELECT * FROM transactions ORDER BY created_at DESC LIMIT 5");
+$stmt_transactions = $pdo->query("SELECT id, amount, created_at FROM transactions ORDER BY created_at DESC LIMIT 5");
 $recent_transactions = $stmt_transactions->fetchAll();
-
 ?>
 
 <!DOCTYPE html>
@@ -102,9 +101,9 @@ $recent_transactions = $stmt_transactions->fetchAll();
                 <tbody>
                     <?php foreach ($recent_transactions as $transaction): ?>
                     <tr>
-                        <td><?= htmlspecialchars($transaction['transaction_id']) ?></td>
+                        <td><?= htmlspecialchars($transaction['id']) ?></td> <!-- Updated column name -->
                         <td><?= htmlspecialchars($transaction['amount']) ?></td>
-                        <td><?= htmlspecialchars($transaction['transaction_date']) ?></td>
+                        <td><?= htmlspecialchars($transaction['created_at']) ?></td> <!-- Updated column name -->
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
