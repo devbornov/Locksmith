@@ -16,9 +16,9 @@ $prices = $_POST['prices'] ?? [];
 foreach ($prices as $service_id => $price) {
     if ($price !== '') {
         $stmt = $pdo->prepare("
-            INSERT INTO service_offerings (locksmith_id, service_id, price, approval_status)
+            INSERT INTO service_offerings (locksmith_id, service_id, price, status)
             VALUES (?, ?, ?, 'pending')
-            ON DUPLICATE KEY UPDATE price = VALUES(price), approval_status = 'pending'
+            ON DUPLICATE KEY UPDATE price = VALUES(price), status = 'pending'
         ");
         $stmt->execute([$locksmith_id, $service_id, $price]);
     }

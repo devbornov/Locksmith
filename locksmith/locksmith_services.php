@@ -33,7 +33,7 @@ $services = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Service Prices</title>
-    <link rel="stylesheet" href="../assets/css/servicess.css">
+    <link rel="stylesheet" href="../assets/css/manage_users.css">
 </head>
 <body>
     <div class="container">
@@ -62,8 +62,8 @@ $services = $stmt->fetchAll();
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
-            </table>
-            <button type="submit">Save Prices</button>
+            </table><br>
+            <button class="action-button approve" type="submit">Save Prices</button>
         </form>
     </div>
 </body>
