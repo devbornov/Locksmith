@@ -29,6 +29,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                 <li><a href="?page=manage_users">Manage Users</a></li>
                 <li><a href="?page=manage_locksmiths">Approve/Reject Locksmiths</a></li>
                 <li><a href="?page=update_car_key">Car Key Database</a></li>
+                <li><a href="?page=approve_service_offerings">Approve Services Offering</a></li>
                 <li><a href="?page=service_requests">Monitor Services</a></li>
                 <li><a href="?page=commission_settings">Set Commission</a></li>
                 <li><a href="?page=locksmith_performance">Locksmith Performance</a></li>
@@ -47,6 +48,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                 'manage_users', 
                 'manage_locksmiths', 
                 'update_car_key', 
+                'approve_service_offerings',
                 'service_requests', 
                 'commission_settings',
                 'locksmith_performance' ,
