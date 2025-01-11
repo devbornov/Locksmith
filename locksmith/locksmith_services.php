@@ -38,6 +38,11 @@ $services = $stmt->fetchAll();
 <body>
     <div class="container">
         <h1>Set Your Prices</h1>
+        <?php if (isset($_GET['success'])): ?>
+            <p class="success-message">Prices updated successfully!</p>
+        <?php elseif (isset($_GET['error'])): ?>
+            <p class="error-message">An error occurred while updating prices. Please try again.</p>
+        <?php endif; ?>
         <form action="update_service_prices.php" method="post">
             <table class="user-table">
                 <thead>

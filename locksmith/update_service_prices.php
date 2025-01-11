@@ -13,17 +13,29 @@ if ($_SESSION['role'] !== 'locksmith') {
 $locksmith_id = $_SESSION['user_id'];
 $prices = $_POST['prices'] ?? [];
 
-foreach ($prices as $service_id => $price) {
-    if ($price !== '') {
-        $stmt = $pdo->prepare("
-            INSERT INTO service_offerings (locksmith_id, service_id, price, status)
-            VALUES (?, ?, ?, 'pending')
-            ON DUPLICATE KEY UPDATE price = VALUES(price), status = 'pending'
-        ");
-        $stmt->execute([$locksmith_id, $service_id, $price]);
-    }
-}
+// Use a prepared statement to handle insertion and updating
+try {
+    $pdo->beginTransaction(); // Start a transaction for better performance
 
-header("Location: locksmith_services.php");
+    foreach ($prices as $service_id => $price) {
+        if ($price !== '') { // Only process services with a valid price
+            $stmt = $pdo->prepare("
+                INSERT INTO service_offerings (locksmith_id, service_id, price, status)
+                VALUES (?, ?, ?, 'pending')
+                ON DUPLICATE KEY UPDATE 
+                    price = VALUES(price),
+                    status = 'pending'
+            ");
+            $stmt->execute([$locksmith_id, $service_id, $price]);
+        }
+    }
+
+    $pdo->commit(); // Commit the transaction
+    header("Location: http://localhost/locksmith2/locksmith/dashboard.php?page=locksmith_services");
+} catch (PDOException $e) {
+    $pdo->rollBack(); // Rollback the transaction on error
+    error_log("Database Error: " . $e->getMessage());
+    header("Location: locksmith_services.php?error=1");
+}
 exit();
 ?>
