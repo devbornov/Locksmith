@@ -1,0 +1,51 @@
+/* General container styling */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Styling for the locksmith table */
+.locksmith-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.locksmith-table th, .locksmith-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.locksmith-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.locksmith-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.locksmith-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.locksmith-table td {
+    word-wrap: break-word;
+}
+
+h3 {
+    color: #d9534f; /* Red color for the 'no locksmiths available' message */
+    font-size: 18px;
+    font-weight: normal;
+}

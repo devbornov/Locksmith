@@ -10,7 +10,18 @@ if ($_SESSION['role'] !== 'locksmith') {
     exit();
 }
 
-$locksmith_id = $_SESSION['user_id'];
+// Retrieve locksmith_id from the locksmith_details table based on the user_id from the session
+$stmt = $pdo->prepare("SELECT id FROM locksmith_details WHERE user_id = ?");
+$stmt->execute([$_SESSION['user_id']]);
+$locksmith = $stmt->fetch();
+
+// If the locksmith ID does not exist, redirect or handle the error
+if (!$locksmith) {
+    header("Location: ../auth/login.php");
+    exit();
+}
+
+$locksmith_id = $locksmith['id'];
 
 // Fetch services and their offerings
 $stmt = $pdo->prepare("
@@ -38,6 +49,7 @@ $services = $stmt->fetchAll();
 <body>
     <div class="container">
         <h1>Set Your Prices</h1>
+        <p>Locksmith ID: <?= htmlspecialchars($locksmith_id) ?></p>
         <?php if (isset($_GET['success'])): ?>
             <p class="success-message">Prices updated successfully!</p>
         <?php elseif (isset($_GET['error'])): ?>

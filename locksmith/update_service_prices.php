@@ -10,7 +10,18 @@ if ($_SESSION['role'] !== 'locksmith') {
     exit();
 }
 
-$locksmith_id = $_SESSION['user_id'];
+// Retrieve locksmith_id from the locksmith_details table based on user_id from the session
+$stmt = $pdo->prepare("SELECT id FROM locksmith_details WHERE user_id = ?");
+$stmt->execute([$_SESSION['user_id']]);
+$locksmith = $stmt->fetch();
+
+// If the locksmith ID does not exist, redirect or handle the error
+if (!$locksmith) {
+    header("Location: ../auth/login.php");
+    exit();
+}
+
+$locksmith_id = $locksmith['id']; // Use the correct locksmith_id from locksmith_details table
 $prices = $_POST['prices'] ?? [];
 
 // Use a prepared statement to handle insertion and updating
